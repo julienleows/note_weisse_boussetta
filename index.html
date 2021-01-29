@@ -1,0 +1,82 @@
+<!--
+application notes realiser par
+JULIEN WEISSE S3C 2021
+NAEL BOUSSETTA S3C 2021
+ -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Notes</title>
+  <!-- favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="images/logo-favicon.ico"/>
+  <!-- feuille de style css -->
+  <link rel="stylesheet" href="css/notes.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <!-- viewport -->
+  <meta name="viewport" content="width=device-with, initial-scale=1.0">
+</head>
+
+<body>
+<!-- menu options
+<nav>
+  <ul class="noteapp_menu">
+    <li id="add">+</li>
+    <li id="edit">edit</li>
+    <li id="del">del</li>
+  </ul>
+</nav>-->
+
+<!-- navbar -->
+<nav class="navbar navbar-light bg-light">
+  <div class="fluid">
+    <a class="navbar-brand " href="#">
+      <img src="images/logo.svg" alt="" width="50" height="44" class="d-inline-block align-top">NOTES
+    </a>
+    <button id="add" type="button" class="btn btn-outline-primary btn-lg">+</button>
+    <button id="edit" type="button" class="btn btn-outline-dark btn-lg">edit</button>
+    <button id="del" type="button" class="btn btn-outline-danger btn-lg">del</button>
+  </div>
+</nav>
+
+
+
+<!-- contenu de la page -->
+<div class="noteapp_content">
+
+  <section class="note_list" id="noteListView">
+  </section>
+
+  <section class="main_note">
+    <div class="create_edit_note create_edit_note-hidden" id="noteForm">
+      <label class="form-label">Titre de la Note</label>
+      <input class="form-control" id="form_add_note_title" type="text" placeholder="titre" required maxlength="22"> <br>
+
+      <label class="form-label">Contenu de la note</label>
+      <textarea class="form-control" id="form_add_note_text" placeholder="contenu">contenu de la note</textarea>
+      <small class="form-text text-muted">Le contenu prend en charge le format markdown</small> <br><br>
+
+      <button class="btn btn-primary" id="form_add_note_valid">Valider</button>
+      <button class="btn btn-outline-danger" id="form_undo">Annuler</button>
+    </div>
+
+    <div class="current_note" id="currentNoteView"></div>
+  </section>
+
+</div>
+
+<footer>
+    @JulienWeisse @NaelBoussetta
+    2021 IUT NancyCharlemagne
+</footer>
+
+<!-- showdown.js -->
+<script src="js/showdown.js"></script>
+<!-- note.js -->
+<script src="js/notes.js"></script>
+<!-- bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+
+</html>
