@@ -15,7 +15,8 @@
 function Note(t, c){
     this.titre = t
     this.contenu = c
-    this.date_creation = new Date()
+    this.dateNoteCreation = new Date()
+    this.date_creation = this.dateNoteCreation.getDate() + "/" + this.dateNoteCreation.getMonth()+1 + "/" + this.dateNoteCreation.getFullYear()
     // methodes
     /** permet de changer le titre de la note */
     function setTitre(t) {this.titre = t}
@@ -47,6 +48,7 @@ let noteList = {
         localStorage.removeItem('listNotes')
         localStorage.setItem('listeNotes', JSON.stringify(noteList.getList()))
     },
+    /** */
     load() {
         let tempo = JSON.parse(localStorage.getItem('listeNotes'))
         if (tempo) noteList.listeNotes = tempo
@@ -149,6 +151,7 @@ let noteFormView = {
         noteView.afficherNoteDansDOM(app.currentNoteIndex)
         noteList.save()
         noteListView.selectItem(app.currentNoteIndex) // affichage note courante
+        noteFormView.hide()
     }
 }
 
@@ -164,7 +167,7 @@ let noteView = {
     // methodes
     /** conversion markdown en html */
     conversionMarkdownToHtml(note) {
-        let date = note.date_creation.toString()
+        let date = note.date_creation
         let markdownText = `# ${note.titre.toUpperCase()}
 
 [ ${date} ]
@@ -201,7 +204,7 @@ let mainMenuView = {
         // bouton 'annuler'
         document.querySelector("#form_undo").addEventListener('click', noteFormView.hide)
         // bouton 'editer'
-        document.querySelector("#edit").addEventListener('click', noteList.edit)
+        //document.querySelector("#edit").addEventListener('click', noteList.edit)
 
         // chargement des notes si localstorage
         noteList.load()
