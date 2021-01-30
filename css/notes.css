@@ -76,6 +76,13 @@ nav {
   cursor: pointer;
 }
 
+.note_item {
+  padding-bottom: 4px ;
+  border-width: 1px;
+  border-style: solid;
+  border-color: white;
+}
+
 footer {
   font-size: 10px;
   text-align: center;

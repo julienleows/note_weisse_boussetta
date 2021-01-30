@@ -59,12 +59,14 @@ let noteList = {
         let noteAmodifier = noteList.get(app.currentNoteIndex)
         noteFormView.displayEdition(noteAmodifier)
     },
-    /** permet suppression */
-    delete(event) {
-        noteList.getList.slice(app.currentNoteIndex)
+    // TODO
+    /*  permet suppression
+    delete(i) {
+        noteList.listeNotes = noteList.getList.slice(i+1)
         this.save()
         this.load()
-    }
+        window.location.reload()
+    }*/
 }
 
 
