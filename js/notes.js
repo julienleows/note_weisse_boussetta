@@ -4,7 +4,6 @@
  * @author : Nael Boussetta
  */
 
-"use strict";
 
 /**
  * Note
@@ -60,21 +59,11 @@ let noteList = {
         console.log(noteAmodifier)
         noteFormView.displayEdition(noteAmodifier)
     },
-    // TODO
-    // permet suppression
-    delete(i) {
-      let note = noteList.get(app.currentNoteIndex)
-      let id
-      noteList.listeNotes.forEach((item, i) => {
-        if(note.titre === item.titre && note.contenu === item.contenu)
-        console.log(i)
-        id=i
-      });
-      console.log(id)
-  //  console.log(noteList.listeNotes.splice(id, 1))
-      noteList.save()
-      noteList.load()
-      window.location.reload()
+    /** permet suppression */
+    del() {
+        noteList.listeNotes.splice(app.currentNoteIndex,1)
+        noteList.save()
+        window.location.reload()
     }
 }
 
@@ -102,7 +91,6 @@ let noteListView = {
       noteListView.selectItem(app.currentNoteIndex)
       noteView.afficherNoteDansDOM(app.currentNoteIndex)
   },
-
   /** recoit une note et ajoute un item dans la liste affichee */
   displayItem(note) { // TODO affichage format date
       let text = `${note.titre}    (${note.date_creation})`
@@ -112,7 +100,7 @@ let noteListView = {
       div.addEventListener("click",this.selectNote)
       document.getElementById('noteListView').appendChild(div)
   },
-
+  /** permet selection item */
   selectItem(index) {
       let divChildren = document.getElementById('noteListView').children
       for (let i = 0; i < divChildren.length; i++) {
@@ -172,6 +160,7 @@ let noteFormView = {
         document.querySelector('#form_add_note_valid').classList.add('invisible')
         document.querySelector('#form_edit_note_modif').classList.remove('invisible')
     },
+    /** permet modification */
     modifier() {
         let note = noteList.get(app.currentNoteIndex)
         note.titre = document.getElementById('form_add_note_title').value
@@ -239,7 +228,7 @@ let mainMenuView = {
         // bouton 'modifier'
         document.querySelector("#form_edit_note_modif").addEventListener('click', noteFormView.modifier)
         // bouton 'del'
-        document.querySelector("#del").addEventListener('click', noteList.delete)
+        document.querySelector("#del").addEventListener('click', noteList.del)
 
         // chargement des notes si localstorage
         noteList.load()
@@ -266,6 +255,7 @@ let app = {
         mainMenuView.init()
     }
 }
+
 
 
 
