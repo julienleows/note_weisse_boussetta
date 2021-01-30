@@ -57,16 +57,25 @@ let noteList = {
     edit() {
         console.log('editer')
         let noteAmodifier = noteList.get(app.currentNoteIndex)
+        console.log(noteAmodifier)
         noteFormView.displayEdition(noteAmodifier)
     },
     // TODO
-    /*  permet suppression
+    // permet suppression
     delete(i) {
-        noteList.listeNotes = noteList.getList.slice(i+1)
-        this.save()
-        this.load()
-        window.location.reload()
-    }*/
+      let note = noteList.get(app.currentNoteIndex)
+      let id
+      noteList.listeNotes.forEach((item, i) => {
+        if(note.titre === item.titre && note.contenu === item.contenu)
+        console.log(i)
+        id=i
+      });
+      console.log(id)
+  //  console.log(noteList.listeNotes.splice(id, 1))
+      noteList.save()
+      noteList.load()
+      window.location.reload()
+    }
 }
 
 
