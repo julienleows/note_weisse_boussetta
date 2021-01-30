@@ -48,21 +48,22 @@ let noteList = {
         localStorage.removeItem('listNotes')
         localStorage.setItem('listeNotes', JSON.stringify(noteList.getList()))
     },
-    /** */
+    /** permet de charger */
     load() {
         let tempo = JSON.parse(localStorage.getItem('listeNotes'))
         if (tempo) noteList.listeNotes = tempo
     },
-    /** */
+    /** permet edition */
     edit() {
         console.log('editer')
         let noteAmodifier = noteList.get(app.currentNoteIndex)
         noteFormView.displayEdition(noteAmodifier)
     },
-    /** */
-    delete() {
-        noteList.get(app.currentNoteIndex)
+    /** permet suppression */
+    delete(event) {
+        noteList.getList.slice(app.currentNoteIndex)
         this.save()
+        this.load()
     }
 }
 
@@ -75,6 +76,7 @@ let noteList = {
  */
 let noteListView = {
   // methodes
+  /** permet selection 1 note*/
   selectNote(event) {
       let elementSource = event.target
 
@@ -224,8 +226,8 @@ let mainMenuView = {
         document.querySelector("#edit").addEventListener('click', noteList.edit)
         // bouton 'modifier'
         document.querySelector("#form_edit_note_modif").addEventListener('click', noteFormView.modifier)
-        // bouton 'delete'
-        //document.querySelector("#del").addEventListener('click', noteList.delete)
+        // bouton 'del'
+        document.querySelector("#del").addEventListener('click', noteList.delete)
 
         // chargement des notes si localstorage
         noteList.load()
