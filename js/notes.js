@@ -171,6 +171,7 @@ let noteFormView = {
         noteFormView.hide()
         noteView.afficherNoteDansDOM(app.currentNoteIndex)
         noteList.load()
+        window.location.reload()
     }
 }
 
