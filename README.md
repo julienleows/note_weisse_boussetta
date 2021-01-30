@@ -14,6 +14,10 @@ avec utilisation du localStorage**
 	* Julien Weisse [@julienleows](https://github.com/julienjeows)
 	* Nael Boussetta [@boussett4u](https://github.com/boussett4u)
 
+## disponible sur webetu :
+
+[https://webetu.iutnc.univ-lorraine.fr/note](https://webetu.iutnc.univ-lorraine.fr/www/weisse53u/webjs/sujet_note_weisse_boussetta)
+
 ## Technologies
 * HTML ([w3.org](https://www.w3.org))
 * CSS ([w3/CSS.org](https://www.w3.org/Style/CSS))
