@@ -16,7 +16,7 @@ avec utilisation du localStorage**
 
 ## disponible sur webetu :
 
-[https://webetu.iutnc.univ-lorraine.fr/note](https://webetu.iutnc.univ-lorraine.fr/www/weisse53u/webjs/sujet_note_weisse_boussetta)
+[https://webetu.iutnc.univ-lorraine.fr/note](https://webetu.iutnc.univ-lorraine.fr/www/weisse53u/webjs/note_weisse_boussetta)
 
 ## Technologies
 * HTML ([w3.org](https://www.w3.org))
