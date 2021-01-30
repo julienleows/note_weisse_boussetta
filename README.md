@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="230" height="150" src="https://github.com/julienleows/note_weisse_boussetta/blob/main/images/logo.svg">
+  <img width="230" height="150" src="https://github.com/julienleows/sujet_note_weisse_boussetta/blob/master/images/logo.svg">
 </p>
 
 # Projet Révison Note
