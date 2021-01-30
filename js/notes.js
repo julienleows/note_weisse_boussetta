@@ -56,18 +56,13 @@ let noteList = {
     /** */
     edit() {
         console.log('editer')
-        noteFormView.display()
-        let note = noteList.get(app.currentNoteIndex)
-        note.titre = document.querySelector("#form_add_note_title").value
-        note.contenu = document.querySelector("#form_add_note_text").value
-
-
-        noteListView.displayItem(note)
-
-        noteView.afficherNoteDansDOM(app.currentNoteIndex)
-        noteFormView.hide() // rendre invisible le formulaire
-        noteList.save()
-        noteListView.selectItem(app.currentNoteIndex) // affichage note courante
+        let noteAmodifier = noteList.get(app.currentNoteIndex)
+        noteFormView.displayEdition(noteAmodifier)
+    },
+    /** */
+    delete() {
+        noteList.get(app.currentNoteIndex)
+        this.save()
     }
 }
 
@@ -113,6 +108,7 @@ let noteListView = {
               divChildren[i].classList.add("note_list_item-selected")
           }
       }
+      noteFormView.hide()
   }
 }
 
@@ -129,7 +125,9 @@ let noteFormView = {
     display() {
         document.getElementById('form_add_note_title').value = null
         document.getElementById('form_add_note_text').value = null
+        document.querySelector('#form_edit_note_modif').classList.add('invisible')
         document.querySelector('#noteForm').classList.remove('create_edit_note-hidden')
+        document.querySelector('#form_add_note_valid').classList.remove('invisible')
 
     },
     /** rend le formulaire caché en modifiant la liste de classes css */
@@ -152,6 +150,25 @@ let noteFormView = {
         noteList.save()
         noteListView.selectItem(app.currentNoteIndex) // affichage note courante
         noteFormView.hide()
+    },
+    /** rend visible le formulaire EDITION */
+    displayEdition(note) {
+        document.getElementById('form_add_note_title').value = note.titre
+        document.getElementById('form_add_note_text').value = note.contenu
+        document.querySelector('#noteForm').classList.remove('create_edit_note-hidden')
+        document.querySelector('#form_add_note_valid').classList.add('invisible')
+        document.querySelector('#form_edit_note_modif').classList.remove('invisible')
+    },
+    modifier() {
+        let note = noteList.get(app.currentNoteIndex)
+        note.titre = document.getElementById('form_add_note_title').value
+        note.contenu = document.getElementById('form_add_note_text').value
+        let dateNoteCreation = new Date()
+        note.date_creation = dateNoteCreation.getDate() + "/" + dateNoteCreation.getMonth()+1 + "/" + dateNoteCreation.getFullYear()
+        noteList.save()
+        noteFormView.hide()
+        noteView.afficherNoteDansDOM(app.currentNoteIndex)
+        noteList.load()
     }
 }
 
@@ -203,8 +220,12 @@ let mainMenuView = {
         document.querySelector("#form_add_note_valid").addEventListener('click', noteFormView.validate)
         // bouton 'annuler'
         document.querySelector("#form_undo").addEventListener('click', noteFormView.hide)
-        // bouton 'editer'
-        //document.querySelector("#edit").addEventListener('click', noteList.edit)
+        // bouton 'edit'
+        document.querySelector("#edit").addEventListener('click', noteList.edit)
+        // bouton 'modifier'
+        document.querySelector("#form_edit_note_modif").addEventListener('click', noteFormView.modifier)
+        // bouton 'delete'
+        //document.querySelector("#del").addEventListener('click', noteList.delete)
 
         // chargement des notes si localstorage
         noteList.load()
