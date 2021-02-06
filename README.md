@@ -11,8 +11,8 @@ Ce dépôt github regroupe tous les documents et sources du projet révsion Note
 avec utilisation du localStorage**
 
 * Membres :
-	* Julien Weisse [@julienleows](https://github.com/julienleows)
-	* Nael Boussetta [@boussett4u](https://github.com/boussett4u)
+	* [@julienleows](https://github.com/julienleows)
+	* [@boussett4u](https://github.com/boussett4u)
 
 ## disponible sur webetu :
 
